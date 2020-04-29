@@ -16,8 +16,8 @@
     "electron": "^8.2.4"
   },
   "scripts": {
-    "start:api": "cd ./src/api; ./.venv/Scripts/flask run",
     "start:electron": "electron .",
+    "start:flask": "cd ./src/api; ./.venv/Scripts/flask run",
     "start:react": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
