@@ -9,9 +9,7 @@ This repo is meant to be a template for creating a desktop application with Elec
 2. Run `npm install` at the project root
 
 3. Create python virtual environment
-
   1. Navigate to /src/api
-  
   2. Run create-virtual-environment.cmd script
   
 4. Start React with `npm run start:react` at the project root
