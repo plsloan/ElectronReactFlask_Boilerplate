@@ -1,30 +1,39 @@
-import React, { useEffect } from "react";
-import logo from "./logo.svg";
+import 'antd/dist/antd.css';
+import { Layout } from "antd";
+import { createHashHistory } from 'history';
+import React from "react";
+import {
+  HashRouter,
+  Redirect,
+  Route
+} from "react-router-dom";
+
 import "./App.css";
+import { SideBar } from './sidebar/SideBar'
+import { AppRoutes } from './utils';
+import { Home } from './home/Home';
+
 
 function App() {
-  useEffect(() => {
-    const getTime = async () =>
-      console.log(
-        await fetch("/api/time")
-          .then((res) => res.json())
-          .then((data) => data)
-      );
-    getTime();
-  }, []);
+  let history = createHashHistory();
+  const { Content, Header } = Layout;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="App" hasSider>
+      <HashRouter history={history}>
+        <SideBar history={history} />
+
+        <Content id='appContent'>
+          <Header id='headerContainer'><h1 id='appTitle'>Test Package</h1></Header>
+
+          {/* app content */}
+          <div id='pageContent'>
+            <Route path={AppRoutes.Home} component={Home} />
+            <Redirect from='*' to={AppRoutes.Home} />
+          </div>
+        </Content>
+      </HashRouter>
+    </Layout>
   );
 }
 

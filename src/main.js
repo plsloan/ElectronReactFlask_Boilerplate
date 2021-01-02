@@ -1,10 +1,13 @@
 const { app, BrowserWindow } = require("electron");
+const path = require('path')
 
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    autoHideMenuBar: true,
     height: 600,
+    width: 800,
+    webPreferences: { preload: path.join(__dirname, 'preload.js') }
   });
 
   mainWindow.loadURL("http://localhost:3000");
